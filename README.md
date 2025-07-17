@@ -1,28 +1,24 @@
 # EfficientResearchWork
 Efficient research work environment setup for Computer Science and general workflow for Deep Learning experiments. Contribute to our lab [VCL](http://vcl.pku.edu.cn/index.html).
 
+参照这个[仓库](https://github.com/ChrisWu1997/EfficientResearchWork)修改
+
 ## Contents
-- [Work environment setup](#Work-environment-setup)
-  - [Terminal](#Terminal)
-  - [Shell](#Shell)
-  - [Server](#Server)
-    - [Connection](#Connection)
-    - [tmux](#tmux)
-  - [Code editor](#Code-editor)
-    - [python](#python) : PyCharm
-    - [C/C++](#C/C++)
-    - [Vim](#Vim)
-  - [Cloud Storage](#Cloud-Storage)
-- [Deep Learning Experiments Workflow](#Deep-Learning-Experiments-Workflow)
-  - [Virtual Environment](#Virtual-Environment)
-  - [Code structure](#Code-structure)
-  - [Experiment organization](#Experiment-organization)
-  - [Visualization](#Visualization)
-  - [Debug Trick](#Debug-Trick)
-- [Commonly used CG software](#Commonly-used-CG-software)
-  - Blender
-  - MeshLab
-  - Unity
+- [EfficientResearchWork](#efficientresearchwork)
+  - [Contents](#contents)
+  - [Work environment setup](#work-environment-setup)
+    - [Terminal](#terminal)
+    - [Shell](#shell)
+    - [Server](#server)
+    - [Code editor](#code-editor)
+    - [Cloud Storage](#cloud-storage)
+  - [Deep Learning Experiments Workflow](#deep-learning-experiments-workflow)
+    - [Virtual Environment](#virtual-environment)
+    - [Code structure](#code-structure)
+    - [Experiment organization](#experiment-organization)
+    - [Visualization](#visualization)
+    - [Debug Trick](#debug-trick)
+  - [Commonly used CG software](#commonly-used-cg-software)
 
 ## Work environment setup
 
@@ -88,6 +84,8 @@ DL的实验基本都需要在服务器上跑，所以一些针对服务器的操
       ```
       这样我们就为`myname@111.222.333.4`建立了一个别名叫做`lab`，并且关联上了之前配置好的rsa的私钥。同时`LocalForward`将服务器`6008`端口转发到本地的`16008`端口，免去了通常使用tensorboard时ssh的`-L`参数。  
       以后只需要通过`ssh lab`即可直接登录服务器，比原来简便了很多。
+  3. **vscode**
+    在左侧边栏找到一个电脑图案，点击即可看到所有ssh连接的远程机，点击即可连接
 
 - <a name="tmux"></a> **tmux**  
   [tmux](https://github.com/tmux/tmux)是一个unix-like系统下的命令行多路复用工具，可以帮助我们在命令行中同时开多个窗口，并且保证在其中跑的程序不会因为服务器连接的中断而停止，这对于长时间运行的实验（如神经网络训练）尤为重要。大多数人对tmux应该不陌生，也听过有用其他类似软件的。
@@ -101,10 +99,15 @@ DL的实验基本都需要在服务器上跑，所以一些针对服务器的操
   - **常用操作**：  
   推荐阅读这个[指南](https://linuxize.com/post/getting-started-with-tmux/#starting-your-first-tmux-session)来熟悉tmux的常用操作和概念。推荐用一个session来管理一个project，里面的每一个window(或者panel)来管理一个实验，多个实验同时用不同的window(或者panel)来跑。  
 
+- <a name="tmux"></a> **clash-for-linux**
+  在linux服务器上运行clash，参照这个[仓库](https://github.com/fengwu2005/clash-for-linux)
+
 ### Code editor
 
+建议使用vscode，支持所有语言的开发。
+
 - <a name="python"></a> **python**  
-  强推[PyCharm](https://www.jetbrains.com/pycharm/)！！通过学校邮箱注册即可获得免费的专业版。  
+  [PyCharm](https://www.jetbrains.com/pycharm/)！！通过学校邮箱注册即可获得免费的专业版。  
 
   **常用特性**：
   - 远程服务器直连/同步。按官方指南[creating-a-remote-server-configuration](https://www.jetbrains.com/help/pycharm/creating-a-remote-server-configuration.html)操作即可。本地ide修改代码，文件即刻同步到服务器上，对于在服务器上跑实验但是又想本地改代码的人来说十分方便。
